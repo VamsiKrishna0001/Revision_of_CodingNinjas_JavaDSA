@@ -52,8 +52,44 @@ Sample Output 2:
 0 8 6 5
 1 0 2 2 0
      */
-    public static void sumOfTwoArrays(int arr1[], int arr2[], int output[]) {
 
+    public static void main(String[] args) {
+        int[] arr1 = {9,7,6,1};
+        int[] arr2 = {4,5,9};
+        int[] arr3 = new int[1+Math.max(arr1.length, arr2.length)];
+        sumOfTwoArrays(arr1,arr2,arr3);
+        for (int i:arr3){
+            System.out.print(i+" ");
+        }
+    }
+    public static void sumOfTwoArrays(int arr1[], int arr2[], int output[]) {
+    int extra=0,sum=0;
+    int j=arr1.length-1;
+    int k = arr2.length-1;
+    int i = output.length-1;
+    while (j>=0 && k>=0){
+        sum = arr1[j]+arr2[k]+extra;
+        output[i]=sum%10;
+        extra = sum>9 ? 1:0;
+        k--;
+        j--;
+        i--;
+    }
+    while (j>=0){
+        sum = extra+arr1[j];
+        output[i]= sum%10;
+        extra= sum/10;
+        j--;
+        i--;
+    }
+    while (k>=0){
+        sum = extra+arr2[k];
+        output[i]= sum%10;
+        extra= sum/10;
+        k--;
+        i--;
+    }
+    output[i]=extra;
     }
 
     }

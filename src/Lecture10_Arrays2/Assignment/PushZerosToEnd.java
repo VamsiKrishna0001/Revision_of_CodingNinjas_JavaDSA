@@ -42,7 +42,42 @@ Sample Output 2:
 9 8 2 0 0
      */
 
+    public static void main(String[] args) {
+        int[] arr = new int[]{0,3,0,2,0};
+        pushZerosAtEnd1(arr);
+
+        for (int i:arr){
+            System.out.print(i +" ");
+        }
+    }
+
     public static void pushZerosAtEnd(int[] arr) {
+        for (int i=0;i<arr.length;i++){
+            for (int j = i;j< arr.length;j++){
+                if (arr[i]==0){
+                    if (arr[j]!=0){
+                        arr[i]=arr[j];
+                        arr[j]=0;
+                        break;
+                    }
+                    continue;
+                }
+            }
+        }
+    }
+    // orr
+
+    public static void pushZerosAtEnd1(int[] arr) {
+        int j=0;
+        for (int i=0;i<arr.length;i++){
+            if (arr[i]!=0){
+               int temp = arr[i];
+               arr[i]=arr[j];
+               arr[j]=temp;
+               j++;
+            }
+        }
 
     }
+
 }

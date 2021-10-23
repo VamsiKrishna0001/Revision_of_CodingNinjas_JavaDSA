@@ -34,7 +34,17 @@ Sample Output 2:
 0
 3
      */
+    public static void main(String[] args) {
+        int[] arr ={10,20,30,1};
+        System.out.println(arrayRotateCheck(arr));
+
+    }
     public static int arrayRotateCheck(int[] arr){
-    return -1;
+    for (int i=1;i<arr.length;i++){
+        if (arr[i]>arr[i+1]){
+            return i+1;
+        }
+    }
+    return 0;
     }
 }
