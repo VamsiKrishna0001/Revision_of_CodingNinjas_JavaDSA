@@ -21,16 +21,30 @@ The first and only line of output should print the maximum subarray sum, as desc
         for (int i=0;i<n;i++){
             arr[i]=sc.nextInt();
         }
-        int MAX = Integer.MIN_VALUE, Dmax = 0;
+        System.out.println(maxSubarraySum(arr, n));
+//        int MAX = Integer.MIN_VALUE, Dmax = 0;
+//
+//        for (int i = 0; i < n; i++)
+//        {
+//            Dmax = Dmax + arr[i];
+//            if (MAX < Dmax)
+//                MAX = Dmax;
+//            if (Dmax < 0)
+//                Dmax = 0;
+//        }
+//        System.out.println( MAX);
+    }
+    public static int maxSubarraySum(int[] arr,int n) {
+        int maxSoFar = 0;
+        int maxEndingHere = 0;
+        for (int i: arr) {
+            maxEndingHere = maxEndingHere + i;
 
-        for (int i = 0; i < n; i++)
-        {
-            Dmax = Dmax + arr[i];
-            if (MAX < Dmax)
-                MAX = Dmax;
-            if (Dmax < 0)
-                Dmax = 0;
+            maxEndingHere = Integer.max(maxEndingHere, 0);
+
+            maxSoFar = Integer.max(maxSoFar, maxEndingHere);
         }
-        System.out.println( MAX);
+
+        return maxSoFar;
     }
 }

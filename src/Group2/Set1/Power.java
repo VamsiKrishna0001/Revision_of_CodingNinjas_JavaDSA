@@ -1,5 +1,7 @@
 package Group2.Set1;
 
+import java.util.Scanner;
+
 public class Power {
 //    public static int Power(int a, int[] b){
 //
@@ -21,19 +23,19 @@ public class Power {
         int[] buf = new int[10];
         buf[0] = 1;
         a = a%1337;
-        for(int i =1;i<10;i++){               //since b is large, and b[i] is between 0 and 9, which reuse several times, we build pattern for them
+        for(int i =1;i<10;i++){
             buf[i] = (buf[i-1]*a)%1337;
         }
-        int ans = buf[b[0]], temp;
+        int res = buf[b[0]], temp;
         for(int i = 1;i<b.length;i++){
-            ans = (ans*ans)%1337;      //calculate ans^10%1337 in 5 lines, since we may have ans^3>Integer.MAX_VALUE.
-            temp = ans;
-            ans = (ans*ans)%1337;
-            ans = (ans*ans)%1337;
-            ans = (ans*temp)%1337;
-            ans = (ans*buf[b[i]])%1337;
+            res = (res*res)%1337;
+            temp = res;
+            res = (res*res)%1337;
+            res = (res*res)%1337;
+            res = (res*temp)%1337;
+            res = (res*buf[b[i]])%1337;
         }
-        return ans;
+        return res;
     }
     public static int power(int x, int n, int mod){
         if(n==0)return 1;
@@ -44,35 +46,12 @@ public class Power {
     }
 
     public static void main(String[] args) {
-//        Scanner s = new Scanner(System.in);
-//        int a = s.nextInt();
-//        int n =s.nextInt();
-//        int[] arr = new int[n];
-//        for (int i=0;i<n;i++) arr[i]=s.nextInt();
-//        System.out.println(Power(a,arr));
-        Car c=new Car();
-        c.print();
+        Scanner s = new Scanner(System.in);
+        int a = s.nextInt();
+        int n =s.nextInt();
+        int[] arr = new int[n];
+        for (int i=0;i<n;i++) arr[i]=s.nextInt();
+        System.out.println(Power(a,arr));
     }
 
-}
-class Vehicle{
-    String colour;
-    private int number;
-    void print()
-    {
-        System.out.println("vehicle");
-    }
-}
-
-class Car extends Vehicle{
-    void print()
-    {
-        System.out.println("car");
-    }
-}
-class Honda extends Car{
-    void print()
-    {
-        System.out.println("Honda");
-    }
 }
